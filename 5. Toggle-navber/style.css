@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Croissant+One&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  font-family: "Croissant One", cursive;
+  background: url(./images/toggle-navber-bg.jpg) no-repeat center center/cover;
+}
+
+header {
+  padding: 10px 20px;
+  background-color: #f5ebe0;
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.toggle-btn {
+  font-size: 22px;
+  background: none;
+  border: none;
+}
+
+.nav {
+  height: 0;
+  overflow: hidden;
+  transition: all .5s ease;
+}
+
+.show-nav {
+  height: auto;
+}
+.nav ul {
+  list-style: none;
+  display: flex;
+  flex-flow: column;
+  row-gap: 20px;
+  padding: 25px 0px;
+}
+
+.sign-up {
+  border: none;
+  font-family: "Croissant One", cursive;
+  font-size: 16px;
+}
+
+@media only screen and (min-width: 768px) {
+  header {
+    padding: 15px 25px;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .toggle-btn {
+    display: none;
+  }
+  .nav {
+    display: block;
+  }
+  .nav ul{
+    padding: 0;
+    flex-flow: row wrap;
+    column-gap: 30px;
+  }
+}
