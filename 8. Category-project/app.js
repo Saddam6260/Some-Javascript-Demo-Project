@@ -2,6 +2,7 @@ const flowerItems = [
   {
     id: 1,
     name: "Fresh Flower",
+    category: "fresh flower",
     price: 10.3,
     img: "./images/fresh-flower-1.jpg",
     desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo harum, accusamus laudantium nulla soluta optio.",
@@ -9,6 +10,7 @@ const flowerItems = [
   {
     id: 2,
     name: "Live Plant",
+    category: "live plant",
     price: 10.3,
     img: "./images/live-plant-1.jpg",
     desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo harum, accusamus laudantium nulla soluta optio.",
@@ -16,6 +18,7 @@ const flowerItems = [
   {
     id: 3,
     name: "Fresh Flower",
+    category: "fresh flower",
     price: 10.9,
     img: "./images/fresh-flower-3.jpg",
     desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo harum, accusamus laudantium nulla soluta optio.",
@@ -23,6 +26,7 @@ const flowerItems = [
   {
     id: 4,
     name: "Fresh Flower",
+    category: "fresh flower",
     price: 10.5,
     img: "./images/fresh-flower-4.jpg",
     desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo harum, accusamus laudantium nulla soluta optio.",
@@ -30,6 +34,7 @@ const flowerItems = [
   {
     id: 5,
     name: "Live Plant",
+    category: "live plant",
     price: 10.5,
     img: "./images/live-plant-2.jpg",
     desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo harum, accusamus laudantium nulla soluta optio.",
@@ -37,6 +42,7 @@ const flowerItems = [
   {
     id: 6,
     name: "Fresh Flower",
+    category: "fresh flower",
     price: 11.5,
     img: "./images/fresh-flower-2.jpg",
     desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo harum, accusamus laudantium nulla soluta optio.",
@@ -44,6 +50,7 @@ const flowerItems = [
   {
     id: 7,
     name: "Organic Flower",
+    category: "organic flower",
     price: 11.5,
     img: "./images/organic-flower-1.jpg",
     desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo harum, accusamus laudantium nulla soluta optio.",
@@ -51,6 +58,7 @@ const flowerItems = [
   {
     id: 8,
     name: "Organic Flower",
+    category: "organic flower",
     price: 11.5,
     img: "./images/organic-flower-2.jpg",
     desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo harum, accusamus laudantium nulla soluta optio.",
@@ -58,6 +66,7 @@ const flowerItems = [
   {
     id: 9,
     name: "Live Plant",
+    category: "live plant",
     price: 11.5,
     img: "./images/live-plant-3.jpg",
     desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo harum, accusamus laudantium nulla soluta optio.",
@@ -65,6 +74,7 @@ const flowerItems = [
   {
     id: 10,
     name: "Organic Flower",
+    category: "organic flower",
     price: 11.5,
     img: "./images/organic-flower-3.jpg",
     desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo harum, accusamus laudantium nulla soluta optio.",
@@ -73,11 +83,28 @@ const flowerItems = [
 
 // Selctor
 const secCenter = document.querySelector(".section-center");
+const filterBtns = document.querySelectorAll(".filter-btn");
 
 window.addEventListener("DOMContentLoaded", function () {
   displayItems(flowerItems);
 });
 
+filterBtns.forEach(function (btn) {
+  btn.addEventListener("click", function (e) {
+    const category = e.currentTarget.dataset.id;
+
+    const menuCategory = flowerItems.filter(function (menuItem) {
+      if (menuItem.category === category) {
+        return menuItem;
+      }
+    });
+    if (category === "all") {
+      displayItems(flowerItems);
+    } else {
+      displayItems(menuCategory);
+    }
+  });
+});
 function displayItems(flowerItems) {
   const displayMenu = flowerItems
     .map(function (item) {
